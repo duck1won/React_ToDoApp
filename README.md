@@ -1,2 +1,2 @@
-# react_ToDoApp
+# react_toDoApp
 Creating a ToDo app with React language
