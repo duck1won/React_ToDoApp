@@ -1,1 +1,2 @@
-# Getting Started with Create React App
+# react_toDoApp
+Creating a ToDo app with React language
