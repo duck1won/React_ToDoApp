@@ -18,22 +18,26 @@ export default class App extends Component {
     }
   }
 
-  todoData = [
-    {
-      id: "1",
-      title: "공부하기",
-      complete: true
-    },
-    {
-      id: "2",
-      title: "청소하기",
-      complete: false
-    }
-  ];
+  state = {
+    todoData: [
+      {
+        id: "1",
+        title: "공부하기",
+        complete: true
+      },
+      {
+        id: "2",
+        title: "청소하기",
+        complete: false
+      }
+    ]
+  };
+
   //filter메소드 사용하여 할일 목록 지워 콘솔로그 찍기
   handleClick = (id) => {
-    let newTodoData = this.todoData.filter((data) => data.id !== id);
+    let newTodoData = this.state.todoData.filter((data) => data.id !== id);
     console.log('newTodoData', newTodoData);
+    this.setState({ todoData: newTodoData });
   }
 
   render() {
@@ -44,7 +48,7 @@ export default class App extends Component {
           <div className="title">
             <h1>할 일 목록</h1>
           </div>
-          {this.todoData.map((data) => ( //key속성을 넣어줘야한다 data 에서는 id값이 key에 해당함
+          {this.state.todoData.map((data) => ( //key속성을 넣어줘야한다 data 에서는 id값이 key에 해당함
             <div style={this.getStyle()} key={data.id}>
               <input type="checkbox" defaultchecked={false} />
               {data.title}
