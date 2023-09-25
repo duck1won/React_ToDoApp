@@ -29,7 +29,12 @@ export default class App extends Component {
       title: "청소하기",
       complete: false
     }
-  ]
+  ];
+  //filter메소드 사용하여 할일 목록 지워 콘솔로그 찍기
+  handleClick = (id) => {
+    let newTodoData = this.todoData.filter((data) => data.id !== id);
+    console.log('newTodoData', newTodoData);
+  }
 
   render() {
     return (
@@ -40,10 +45,10 @@ export default class App extends Component {
             <h1>할 일 목록</h1>
           </div>
           {this.todoData.map((data) => ( //key속성을 넣어줘야한다 data 에서는 id값이 key에 해당함
-            <div style={this.getStyle()}>
+            <div style={this.getStyle()} key={data.id}>
               <input type="checkbox" defaultchecked={false} />
               {data.title}
-              <button style={this.btnStyle}>x</button>
+              <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
             </div>
           ))}
         </div>
