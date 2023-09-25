@@ -17,6 +17,20 @@ export default class App extends Component {
       textDecoration: 'none'
     }
   }
+
+  todoData = [
+    {
+      id: "1",
+      title: "공부하기",
+      complete: true
+    },
+    {
+      id: "2",
+      title: "청소하기",
+      complete: false
+    }
+  ]
+
   render() {
     return (
       //jsx에서는 html과 다르게 class뒤에 Name을 무조껀 붙혀야한다 'className'
@@ -25,12 +39,13 @@ export default class App extends Component {
           <div className="title">
             <h1>할 일 목록</h1>
           </div>
-
-          <div style={this.getStyle()}>
-            <input type="checkbox" defaultchecked={false} />
-            공부하기
-            <button style={this.btnStyle}>x</button>
-          </div>
+          {this.todoData.map((data) => ( //key속성을 넣어줘야한다 data 에서는 id값이 key에 해당함
+            <div style={this.getStyle()}>
+              <input type="checkbox" defaultchecked={false} />
+              {data.title}
+              <button style={this.btnStyle}>x</button>
+            </div>
+          ))}
         </div>
       </div>
     )
