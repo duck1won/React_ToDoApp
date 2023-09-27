@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import './App.css';
 import List from './components/List';
+import Form from './components/Form';
 //클래스 컴포넌트를 함수형 컴포넌트로 변경
 export default function App() {
 
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
-  const handelChange = (e) => {
-    setValue(e.target.value);
-  }
+
 
   const handelSubmit = (e) => {
     //form안에 input을 전송할 때 페이지 리로드 되는 걸 막아줌
@@ -36,23 +35,7 @@ export default function App() {
         </div>
 
         <List todoData={todoData} setTodoData={setTodoData} />
-
-        <form style={{ display: 'flex' }} onSubmit={handelSubmit}>
-          <input
-            type="text"
-            name="value"
-            style={{ flex: '10', padding: '5px' }}
-            placeholder="해야 할 일을 입력하세요."
-            value={value}
-            onChange={handelChange}
-          />
-          <input
-            type="submit"
-            value="입력"
-            className="btn"
-            style={{ flex: '1' }}
-          />
-        </form>
+        <Form handelSubmit={handelSubmit} value={value} setValue={setValue} />
 
       </div>
     </div>
